@@ -1,6 +1,5 @@
-import time
-
-start = time.time()
+import sys
+sys.stdin = open("input.txt","r")
 T= int(input())
 for test_case in range(1, T+1):
     li = map(int,input().split())
@@ -15,5 +14,3 @@ for test_case in range(1, T+1):
     if p >=5:
         n += 1
     print("#" + str(test_case) , str(n))
-end=time.time()
-print(end-start)
