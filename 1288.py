@@ -7,7 +7,7 @@ for test_case in range(1, t+1):
     n = int(input())
     k = 1
     target = [str(i) for i in range(10)]
-
+    kn =""
     while target: # 타겟만큼 반복xxxx (1 이상의 값이면 true, 0이면 false)
         kn = k * n
         kn = str(kn)
