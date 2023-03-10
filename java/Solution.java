@@ -1,103 +1,30 @@
-import java.io.*;
-import java.util.*;
-
+import java.util.Scanner;
 public class Solution {
-    public static void main(String[] args) throws Exception {
-
+    public static void main(String args[]) {
         Scanner sc = new Scanner(System.in);
-//        int len = sc.nextInt();
-//        int[] x = new int[len];
-//        Random rand = new Random();
-//        for (int i = 0; i < x.length; i++) {
-//            x[i] = rand.nextInt(100);
-//        }
-//        for (int i = 0; i < x.length; i++) {
-//            System.out.printf("x[%d] : %d\n", i, x[i]);
-//        }
-//        System.out.println();
-//
-//        reverse(x);
-//        int idx = 0;
-//
-//        for (int n : x) {
-//            System.out.printf("x[%d] : %d\n", idx, n);
-//            ++idx;
-//        }
-//        System.out.println();
-//
-//        System.out.printf("sum : %d\n", sumOf(x));
+        int T = sc.nextInt();
+        for(int t=1; t<=T; t++) {
+            int n = sc.nextInt();
+            String s = ""; // 리스트보다 스트링(char의 리스트형이라고 생각)
 
-//        int[] a = {1, 2, 3, 4, 5};
-//        int[] b = new int[a.length];
-//        copy(a, b);
-//        for (int n : b) {
-//            System.out.printf("copy : %d\n", n);
-//        }
-//        rcopy(a, b);
-//        for (int n : b) {
-//            System.out.printf("rcopy : %d\n", n);
-//        }
+            for(int i=0; i<n; i++) {
+                String ch = sc.next();
+                int r = sc.nextInt();
 
-        int x =32;
-        int r = sc.nextInt();
-        char[] d= new char[10]; // 배열의 크기가 얼마나 될 지 알 수 없다 => 동적배열(ArrayList)
-        char[] test= cardConvR(x,r,d);
-        reverse(test);
-        System.out.println(test);
-    }
+                for (int j=0; j<r; j++){
+                    s += ch; // 스트링 컨캣(문자하니씩 반복수만큼 이어붙이기)
+                }
+            }
 
-    static void swap(int[] a, int idx1, int idx2) {
-        int t = a[idx1];
-        a[idx1] = a[idx2];
-        a[idx2] = t;
-    }
-    static void swap(char[] a, int idx1, int idx2) {
-        char t = a[idx1];
-        a[idx1] = a[idx2];
-        a[idx2] = t;
-    }
+            System.out.printf("#%d\n", t);
 
-    static void reverse(int[] a) {
-        for (int i = 0; i < a.length / 2; i++) {
-            swap(a, i, a.length - i - 1);
+            for(int i=0; i<s.length(); i++) { // 스트링 길이만큼 반복
+                System.out.print(s.charAt(i)); // 스트링 인덱스에 대응되는 문자 하니씩 출력
+                if( i%10 ==9 ) // 너비가 10 고정, 증가하는 i를 다시 0으로 초기화 필요 없이 10으로 나눈 나머지값으로 분기식 작성
+                    System.out.println();
+            }
+            System.out.println(); // 이거까지 있어야 모든 테케 통과 왜지?=>하나의 테스트케이스가 끝나면 줄바꿈을 해야줘야됨 안그러면 이전 출력 에 #test_case가 붙여줘서 나옴.
+
         }
-    }
-    static void reverse(char[] a) {
-        for (int i = 0; i < a.length / 2; i++) {
-            swap(a, i, a.length - i - 1);
-        }
-    }
-
-    static int sumOf(int[] a) {
-        int sum = 0;
-        for (int n : a) {
-            sum += n;
-        }
-        return sum;
-    }
-
-    static void copy(int[] a, int[] b) {
-        int i = 0;
-        for (int n : a) {
-            b[i++] = n;
-        }
-    }
-
-    static void rcopy(int[] a, int[] b) {
-        int i = a.length - 1;
-        for (int n : a) {
-            b[i--] = n;
-        }
-    }
-
-    //기수변환(간단한 소인수분해 문제와 매우 유사)
-    static char[] cardConvR(int x, int r, char[] d) { // x는 dividend r은 divisor
-        String dchar="0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"; // n진수 변환을 위한 족보
-        int digits = 0;
-        while (x != 0){
-            d[digits++] = dchar.charAt(x%r); // 나머지를 char배열에 저장, 역순으로 출력해야됨.
-            x /= r; // x = x/r
-        }
-        return d;
     }
 }
