@@ -24,7 +24,7 @@ public class Solution {
                     System.out.println();
             }
             System.out.println(); // 이거까지 있어야 모든 테케 통과 왜지?=>하나의 테스트케이스가 끝나면 줄바꿈을 해야줘야됨 안그러면 이전 출력 에 #test_case가 붙여줘서 나옴.
-
+//swea1946
         }
     }
 }
