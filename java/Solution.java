@@ -14,12 +14,13 @@ public class Solution {
 
         int len = arr.length - 1;
         int stt = 0;
+        int cnt =0;
         for (int x : arr) {
             System.out.printf("%d ", x);
             int mid = (len + stt) / 2;
-
+            cnt++;
             if(target == x){
-                System.out.printf("\n%d is here",x);
+                System.out.printf("\n%d is here\n",x);
                 break;
             }
             else if(target > x){
@@ -28,6 +29,14 @@ public class Solution {
             else if(x > target){
                 len = mid-1;
             }
+            if(cnt == arr.length)
+                System.out.println("Can't Found");
         }
+        Arrays.sort(arr);
+        int bs = Arrays.binarySearch(arr,target);
+        if(bs <= -1)
+            System.out.println("Can't found");
+        else
+            System.out.printf("%d is in arr[%d]\n",target,bs);
     }
 }
